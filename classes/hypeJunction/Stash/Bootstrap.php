@@ -29,7 +29,7 @@ class Bootstrap extends PluginBootstrap {
 	 * {@inheritdoc}
 	 */
 	public function boot() {
-		elgg_register_plugin_hook_handler('cache:flush', 'system', function () {
+		elgg_register_event_handler('cache:flush', 'system', function () {
 			Stash::instance()->flushCache();
 		});
 
