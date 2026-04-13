@@ -58,12 +58,27 @@ class CommentsCounter implements Preloader {
 
 	/**
 	 * {@inheritdoc}
+	 *
+	 * Counts comments directly via elgg_count_entities instead of
+	 * delegating to ElggEntity::countComments(). Elgg 4.1+ wraps
+	 * countComments() in a process-global Elgg\Comments\DataService
+	 * cache that has no invalidation API — once a count is cached for
+	 * a guid, it never refreshes within the same process. The Stash
+	 * cache invalidates correctly on create:object/delete:after:object
+	 * events, but countComments() would always return the stale
+	 * DataService value, defeating the Stash refresh. Querying
+	 * directly bypasses DataService entirely.
 	 */
 	public function preload(\ElggEntity $entity) {
 		return elgg_call(
 			ELGG_IGNORE_ACCESS,
 			function () use ($entity) {
-				return $entity->countComments();
+				return elgg_count_entities([
+					'type' => 'object',
+					'subtype' => 'comment',
+					'container_guid' => $entity->guid,
+					'distinct' => false,
+				]);
 			}
 		);
 	}
