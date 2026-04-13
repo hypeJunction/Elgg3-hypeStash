@@ -1,14 +1,14 @@
 <?php
 
 return [
-	'db.stash.cache' => \DI\object(\Elgg\Cache\CompositeCache::class)
+	'db.stash.cache' => \DI\create(\Elgg\Cache\CompositeCache::class)
 		->constructor(
 			'stash.cache',
 			\DI\get('config'),
 			ELGG_CACHE_PERSISTENT | ELGG_CACHE_FILESYSTEM
 		),
 
-	'db.stash' => \DI\object(\hypeJunction\Stash\Stash::class)
+	'db.stash' => \DI\create(\hypeJunction\Stash\Stash::class)
 		->constructor(
 			\DI\get('db'),
 			\DI\get('db.stash.cache'),

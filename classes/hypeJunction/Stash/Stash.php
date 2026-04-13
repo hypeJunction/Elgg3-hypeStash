@@ -3,11 +3,11 @@
 namespace hypeJunction\Stash;
 
 use Elgg\Application\Database;
-use Elgg\Cacheable;
+use Elgg\Traits\Cacheable;
 use Elgg\Collections\Collection;
-use Elgg\Di\ServiceFacade;
+use Elgg\Traits\Di\ServiceFacade;
 use Elgg\EventsService;
-use Elgg\Loggable;
+use Elgg\Traits\Loggable;
 use Elgg\PluginHooksService;
 use ElggCache;
 use ElggEntity;
