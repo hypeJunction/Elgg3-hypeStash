@@ -12,6 +12,9 @@ use Elgg\PluginHooksService;
 use ElggCache;
 use ElggEntity;
 
+/**
+ * Stash class.
+ */
 class Stash {
 
 	use ServiceFacade;
@@ -104,7 +107,7 @@ class Stash {
 
 		$value = $this->cache->load($key);
 
-		if (null === $value || $reload) {
+		if ($value === null || $reload) {
 			$preloader = new $class();
 			/* @var $preloader Preloader */
 

@@ -7,6 +7,9 @@ use Elgg\EventsService;
 use Elgg\PluginHooksService;
 use ElggEntity;
 
+/**
+ * Preloader interface.
+ */
 interface Preloader extends CollectionItemInterface {
 
 	/**

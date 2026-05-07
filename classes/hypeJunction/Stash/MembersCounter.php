@@ -7,6 +7,9 @@ use Elgg\EventsService;
 use Elgg\PluginHooksService;
 use ElggComment;
 
+/**
+ * MembersCounter class.
+ */
 class MembersCounter implements Preloader {
 
 	const PROPERTY = 'members_total';

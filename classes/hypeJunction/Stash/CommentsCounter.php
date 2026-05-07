@@ -7,6 +7,9 @@ use Elgg\EventsService;
 use Elgg\PluginHooksService;
 use ElggComment;
 
+/**
+ * CommentsCounter class.
+ */
 class CommentsCounter implements Preloader {
 
 	const PROPERTY = 'comments_total';

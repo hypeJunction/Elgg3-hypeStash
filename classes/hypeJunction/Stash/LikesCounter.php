@@ -6,6 +6,9 @@ use Elgg\Event;
 use Elgg\EventsService;
 use Elgg\PluginHooksService;
 
+/**
+ * LikesCounter class.
+ */
 class LikesCounter implements Preloader {
 
 	const PROPERTY = 'likes_total';

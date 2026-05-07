@@ -7,6 +7,9 @@ use Elgg\EventsService;
 use Elgg\PluginHooksService;
 use ElggComment;
 
+/**
+ * LastComment class.
+ */
 class LastComment implements Preloader {
 
 	const PROPERTY = 'last_comment';
