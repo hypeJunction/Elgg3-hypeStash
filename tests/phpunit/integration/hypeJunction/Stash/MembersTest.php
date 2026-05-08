@@ -31,8 +31,10 @@ class MembersTest extends IntegrationTestCase {
 		$total = elgg_get_total_members($group);
 		$this->assertEquals(2, $total);
 
-		$rel = check_entity_relationship($member->guid, 'member', $group->guid);
-		$rel->delete();
+		$rels = elgg_get_relationships(['guid_one' => $member->guid, 'relationship' => 'member', 'guid_two' => $group->guid, 'limit' => 1]);
+		if ($rels) {
+			$rels[0]->delete();
+		}
 
 		$total = elgg_get_total_members($group);
 		$this->assertEquals(1, $total);

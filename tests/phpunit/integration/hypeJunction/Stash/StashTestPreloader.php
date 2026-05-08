@@ -3,7 +3,6 @@
 namespace hypeJunction\Stash;
 
 use Elgg\EventsService;
-use Elgg\PluginHooksService;
 use ElggEntity;
 
 class StashTestPreloader implements Preloader {
@@ -18,7 +17,7 @@ class StashTestPreloader implements Preloader {
 		return 500;
 	}
 
-	public function up(Stash $stash, EventsService $events, PluginHooksService $hooks) {
+	public function up(Stash $stash, EventsService $events) {
 
 	}
 

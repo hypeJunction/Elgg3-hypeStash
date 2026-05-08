@@ -3,13 +3,12 @@
 namespace hypeJunction\Stash;
 
 use Elgg\Application\Database;
+use Elgg\Cache\BaseCache;
 use Elgg\Traits\Cacheable;
 use Elgg\Collections\Collection;
 use Elgg\Traits\Di\ServiceFacade;
 use Elgg\EventsService;
 use Elgg\Traits\Loggable;
-use Elgg\PluginHooksService;
-use ElggCache;
 use ElggEntity;
 
 /**
@@ -37,28 +36,20 @@ class Stash {
 	protected $events;
 
 	/**
-	 * @var PluginHooksService
-	 */
-	protected $hooks;
-
-	/**
 	 * Constructor
 	 *
-	 * @param Database           $db     Database
-	 * @param ElggCache          $cache  Cache
-	 * @param EventsService      $events Events service
-	 * @param PluginHooksService $hooks  Hooks service
+	 * @param Database      $db     Database
+	 * @param BaseCache     $cache  Cache
+	 * @param EventsService $events Events service
 	 */
 	public function __construct(
 		Database $db,
-		ElggCache $cache,
-		EventsService $events,
-		PluginHooksService $hooks
+		BaseCache $cache,
+		EventsService $events
 	) {
 		$this->db = $db;
 		$this->cache = $cache;
 		$this->events = $events;
-		$this->hooks = $hooks;
 
 		$this->props = new Collection([], Preloader::class);
 	}
@@ -88,7 +79,7 @@ class Stash {
 	public function register(Preloader $preloader) {
 		$this->props->add($preloader);
 
-		$preloader->up($this, $this->events, $this->hooks);
+		$preloader->up($this, $this->events);
 	}
 
 	/**
@@ -121,10 +112,6 @@ class Stash {
 
 	/**
 	 * Reset property in order to load the value from the DB on next request
-	 *
-	 * @note Not all events are triggered after the DB operation is performed,
-	 *       so we can't always use get() with forced reload, because properties
-	 *       might not have been propagated yet
 	 *
 	 * @param string     $prop   Prop name
 	 * @param ElggEntity $entity Entity

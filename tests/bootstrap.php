@@ -1,6 +1,6 @@
 <?php
 /**
- * PHPUnit bootstrap for hypestash (pre-migration characterization suite).
+ * PHPUnit bootstrap for hypestash integration tests.
  */
 
 $elggRoot = '/var/www/html';
@@ -24,9 +24,6 @@ if (function_exists('_elgg_services')) {
     _elgg_services()->plugins->generateEntities();
     $plugin = elgg_get_plugin_from_id('hypestash');
     if ($plugin) {
-        if (!$plugin->isEnabled()) {
-            $plugin->enable();
-        }
         if (!$plugin->isActive()) {
             try { $plugin->activate(); } catch (\Throwable $e) {}
         }

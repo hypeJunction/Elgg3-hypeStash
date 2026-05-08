@@ -4,8 +4,6 @@ namespace hypeJunction\Stash;
 
 use Elgg\Event;
 use Elgg\EventsService;
-use Elgg\PluginHooksService;
-use ElggComment;
 
 /**
  * MembersCounter class.
@@ -31,7 +29,7 @@ class MembersCounter implements Preloader {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function up(Stash $stash, EventsService $events, PluginHooksService $hooks) {
+	public function up(Stash $stash, EventsService $events) {
 		$callback = function (Event $event) use ($stash) {
 			elgg_call(
 				ELGG_IGNORE_ACCESS,
@@ -45,7 +43,7 @@ class MembersCounter implements Preloader {
 						return;
 					}
 
-					$entity = get_entity($relationship->guid_two);
+					$entity = get_entity((int) $relationship->guid_two);
 					if (!$entity) {
 						return;
 					}

@@ -12,7 +12,6 @@ return [
 		->constructor(
 			\DI\get('db'),
 			\DI\get('db.stash.cache'),
-			\DI\get('events'),
-			\DI\get('hooks')
+			\DI\get('events')
 		),
 ];
