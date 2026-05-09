@@ -1,8 +1,8 @@
 {
 	"name": "hypejunction/hypestash",
 	"type": "elgg-plugin",
-	"description": "API for caching common counters to reduce DB queries",
-	"homepage": "http://hypejunction.com",
+	"description": "API for caching common entity data to reduce DB queries",
+	"homepage": "https://github.com/hypeJunction/Elgg3-hypeStash",
 	"keywords": [
 		"elgg", "plugin"
 	],
@@ -10,7 +10,7 @@
 	"authors": [
 		{
 			"name": "Ismayil Khayredinov",
-			"email": "info@hypejunction.com"
+			"email": "ismayil.khayredinov@gmail.com"
 		}
 	],
 	"extra": {
