@@ -4,10 +4,8 @@ namespace hypeJunction\Stash;
 
 use Elgg\Event;
 use Elgg\EventsService;
+use ElggComment;
 
-/**
- * FriendsCounter class.
- */
 class FriendsCounter implements Preloader {
 
 	const PROPERTY = 'friends_total';
@@ -43,7 +41,7 @@ class FriendsCounter implements Preloader {
 						return;
 					}
 
-					$entity = get_entity((int) $relationship->guid_one);
+					$entity = get_entity($relationship->guid_one);
 					if (!$entity) {
 						return;
 					}
