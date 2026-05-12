@@ -18,7 +18,10 @@ class CommentsTest extends IntegrationTestCase {
 
 	}
 
-	public function testCommentsAreCacheable() {
+	/**
+     * @return mixed
+     */
+    public function testCommentsAreCacheable() {
 
 		$object = $this->createObject();
 

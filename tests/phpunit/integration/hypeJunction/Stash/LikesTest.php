@@ -18,7 +18,10 @@ class LikesTest extends IntegrationTestCase {
 
 	}
 
-	public function testLikesCountIsCacheable() {
+	/**
+     * @return mixed
+     */
+    public function testLikesCountIsCacheable() {
 
 		$object = $this->createObject();
 
