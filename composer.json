@@ -15,7 +15,7 @@
         }
     ],
     "extra": {
-        "installer-name": "hypeStash"
+        "installer-name": "hypestash"
     },
     "require": {
         "composer/installers": "^2.0",
