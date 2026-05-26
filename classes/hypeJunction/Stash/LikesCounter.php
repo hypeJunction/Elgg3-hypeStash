@@ -29,7 +29,7 @@ class LikesCounter implements Preloader {
 	public function up(Stash $stash, EventsService $events) {
 
 		$callback = function (Event $event) use ($stash) {
-			elgg_call(
+			\elgg_call(
 				ELGG_IGNORE_ACCESS,
 				function () use ($event, $stash) {
 					$annotation = $event->getObject();
@@ -60,7 +60,7 @@ class LikesCounter implements Preloader {
 	 * {@inheritdoc}
 	 */
 	public function preload(\ElggEntity $entity) {
-		return elgg_call(
+		return \elgg_call(
 			ELGG_IGNORE_ACCESS,
 			function () use ($entity) {
 				return $entity->countAnnotations('likes');

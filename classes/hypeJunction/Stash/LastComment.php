@@ -29,7 +29,7 @@ class LastComment implements Preloader {
 	 */
 	public function up(Stash $stash, EventsService $events) {
 		$callback = function (Event $event) use ($stash) {
-			elgg_call(
+			\elgg_call(
 				ELGG_IGNORE_ACCESS,
 				function () use ($event, $stash) {
 					$comment = $event->getObject();
@@ -59,10 +59,10 @@ class LastComment implements Preloader {
 	 * {@inheritdoc}
 	 */
 	public function preload(\ElggEntity $entity) {
-		return elgg_call(
+		return \elgg_call(
 			ELGG_IGNORE_ACCESS,
 			function () use ($entity) {
-				$comments = elgg_get_entities([
+				$comments = \elgg_get_entities([
 					'limit' => 1,
 					'container_guids' => (int) $entity->guid,
 					'types' => 'object',
