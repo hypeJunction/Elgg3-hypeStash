@@ -30,7 +30,7 @@ class CommentsCounter implements Preloader {
 	 */
 	public function up(Stash $stash, EventsService $events, PluginHooksService $hooks) {
 		$callback = function (Event $event) use ($stash) {
-			elgg_call(
+			\elgg_call(
 				ELGG_IGNORE_ACCESS,
 				function () use ($event, $stash) {
 					$comment = $event->getObject();
@@ -70,10 +70,10 @@ class CommentsCounter implements Preloader {
 	 * directly bypasses DataService entirely.
 	 */
 	public function preload(\ElggEntity $entity) {
-		return elgg_call(
+		return \elgg_call(
 			ELGG_IGNORE_ACCESS,
 			function () use ($entity) {
-				return elgg_count_entities([
+				return \elgg_count_entities([
 					'type' => 'object',
 					'subtype' => 'comment',
 					'container_guid' => $entity->guid,

@@ -26,11 +26,11 @@ class BootstrapTest extends IntegrationTestCase {
 	// --- plugin lifecycle ---
 
 	public function testPluginIsRegistered() {
-		$this->assertInstanceOf(\ElggPlugin::class, elgg_get_plugin_from_id('hypestash'));
+		$this->assertInstanceOf(\ElggPlugin::class, \elgg_get_plugin_from_id('hypestash'));
 	}
 
 	public function testPluginIsActive() {
-		$this->assertTrue(elgg_get_plugin_from_id('hypestash')->isActive());
+		$this->assertTrue(\elgg_get_plugin_from_id('hypestash')->isActive());
 	}
 
 	// --- class autoloading ---

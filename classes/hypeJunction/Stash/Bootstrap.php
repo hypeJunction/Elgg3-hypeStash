@@ -29,11 +29,11 @@ class Bootstrap extends PluginBootstrap {
 	 * {@inheritdoc}
 	 */
 	public function boot() {
-		elgg_register_event_handler('cache:flush', 'system', function () {
+		\elgg_register_event_handler('cache:flush', 'system', function () {
 			Stash::instance()->flushCache();
 		});
 
-		elgg_register_event_handler('delete', 'all', function(Event $event) {
+		\elgg_register_event_handler('delete', 'all', function(Event $event) {
 			$entity = $event->getObject();
 			if (!$entity instanceof \ElggEntity) {
 				return;

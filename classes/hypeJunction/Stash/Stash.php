@@ -98,7 +98,7 @@ class Stash {
 	 * @return mixed
 	 */
 	public function get($prop, ElggEntity $entity, $reload = false) {
-		$class = elgg_extract($prop, $this->props);
+		$class = \elgg_extract($prop, $this->props);
 
 		$key = "{$entity->guid}:$prop";
 
