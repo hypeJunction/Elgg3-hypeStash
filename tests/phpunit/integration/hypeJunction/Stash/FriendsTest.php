@@ -23,18 +23,18 @@ class FriendsTest extends IntegrationTestCase {
 		$user = $this->createUser();
 		$friend = $this->createUser();
 
-		$total = elgg_get_total_friends($user);
+		$total = \elgg_get_total_friends($user);
 		$this->assertEquals(0, $total);
 
 		$user->addFriend($friend->guid);
 
-		$total = elgg_get_total_friends($user);
+		$total = \elgg_get_total_friends($user);
 		$this->assertEquals(1, $total);
 
 		$rel = check_entity_relationship($user->guid, 'friend', $friend->guid);
 		$rel->delete();
 
-		$total = elgg_get_total_friends($user);
+		$total = \elgg_get_total_friends($user);
 		$this->assertEquals(0, $total);
 	}
 }

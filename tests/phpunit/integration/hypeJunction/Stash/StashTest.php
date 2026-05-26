@@ -36,7 +36,7 @@ class StashTest extends IntegrationTestCase {
 		$cached_value = $cache->load($cache_key);
 		$this->assertEquals(5, $cached_value);
 
-		elgg_call(ELGG_IGNORE_ACCESS, function() use ($object) {
+		\elgg_call(ELGG_IGNORE_ACCESS, function() use ($object) {
 			$object->delete();
 		});
 
