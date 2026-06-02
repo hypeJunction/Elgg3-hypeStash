@@ -9,19 +9,33 @@ class StashTestPreloader implements Preloader {
 
 	const PROPERTY = 'preloader_test';
 
-	public function getId() {
+	/**
+     * @return mixed
+     */
+    public function getId() {
 		return self::PROPERTY;
 	}
 
-	public function getPriority() {
+	/**
+     * @return mixed
+     */
+    public function getPriority() {
 		return 500;
 	}
 
-	public function up(Stash $stash, EventsService $events) {
+	/**
+     * @param Stash $stash
+     * @param EventsService $events
+     */
+    public function up(Stash $stash, EventsService $events) {
 
 	}
 
-	public function preload(ElggEntity $entity) {
+	/**
+     * @param ElggEntity $entity
+     * @return mixed
+     */
+    public function preload(ElggEntity $entity) {
 		return 5;
 	}
 }

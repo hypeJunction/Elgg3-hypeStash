@@ -8,7 +8,7 @@ use Elgg\Collections\Collection;
 use Elgg\Traits\Di\ServiceFacade;
 use Elgg\EventsService;
 use Elgg\Traits\Loggable;
-use ElggCache;
+use Elgg\Cache\BaseCache;
 use ElggEntity;
 
 class Stash {
@@ -36,12 +36,12 @@ class Stash {
 	 * Constructor
 	 *
 	 * @param Database      $db     Database
-	 * @param ElggCache     $cache  Cache
+	 * @param BaseCache     $cache  Cache
 	 * @param EventsService $events Events service
 	 */
 	public function __construct(
 		Database $db,
-		ElggCache $cache,
+		BaseCache $cache,
 		EventsService $events
 	) {
 		$this->db = $db;

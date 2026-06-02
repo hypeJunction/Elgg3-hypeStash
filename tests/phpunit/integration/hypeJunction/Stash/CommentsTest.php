@@ -18,7 +18,10 @@ class CommentsTest extends IntegrationTestCase {
 
 	}
 
-	public function testCommentsAreCacheable() {
+	/**
+     * @return mixed
+     */
+    public function testCommentsAreCacheable() {
 
 		// Elgg 4.1+ ElggEntity::countComments() short-circuits to 0 when the
 		// entity's subtype lacks the 'commentable' capability. createObject()
