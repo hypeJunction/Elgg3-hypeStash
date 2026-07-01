@@ -5,7 +5,7 @@ return [
 		->constructor(
 			'stash.cache',
 			\DI\get('config'),
-			ELGG_CACHE_PERSISTENT | ELGG_CACHE_FILESYSTEM
+			\Elgg\Cache\CompositeCache::CACHE_PERSISTENT | \Elgg\Cache\CompositeCache::CACHE_FILESYSTEM
 		),
 
 	'db.stash' => \DI\create(\hypeJunction\Stash\Stash::class)

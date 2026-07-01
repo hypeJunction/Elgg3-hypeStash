@@ -3,45 +3,36 @@
 namespace hypeJunction\Stash;
 
 use Elgg\Application\Database;
-use Elgg\Traits\Cacheable;
 use Elgg\Collections\Collection;
 use Elgg\Traits\Di\ServiceFacade;
 use Elgg\EventsService;
 use Elgg\Traits\Loggable;
-use ElggCache;
+use Elgg\Cache\BaseCache;
 use ElggEntity;
 
 class Stash {
 
 	use ServiceFacade;
 	use Loggable;
-	use Cacheable;
 
-	/**
-	 * @var Collection|Preloader[]
-	 */
-	protected $props;
+	protected ?BaseCache $cache = null;
 
-	/**
-	 * @var Database
-	 */
-	protected $db;
+	protected Collection $props;
 
-	/**
-	 * @var EventsService
-	 */
-	protected $events;
+	protected Database $db;
+
+	protected EventsService $events;
 
 	/**
 	 * Constructor
 	 *
 	 * @param Database      $db     Database
-	 * @param ElggCache     $cache  Cache
+	 * @param BaseCache     $cache  Cache
 	 * @param EventsService $events Events service
 	 */
 	public function __construct(
 		Database $db,
-		ElggCache $cache,
+		BaseCache $cache,
 		EventsService $events
 	) {
 		$this->db = $db;
@@ -51,10 +42,7 @@ class Stash {
 		$this->props = new Collection([], Preloader::class);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public static function name() {
+	public static function name(): string {
 		return 'db.stash';
 	}
 
