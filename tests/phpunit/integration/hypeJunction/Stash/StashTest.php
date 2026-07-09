@@ -23,7 +23,10 @@ class StashTest extends IntegrationTestCase {
 
 		Stash::instance()->register(new StashTestPreloader());
 
-		$cache = Stash::instance()->getCache();
+		// Stash dropped the removed \Elgg\Traits\Cacheable trait on 7.x, so
+		// getCache() no longer exists — read the injected cache service that
+		// the 'db.stash' singleton is constructed with instead.
+		$cache = elgg()->{'db.stash.cache'};
 
 		$cache_key = "{$object->guid}:preloader_test";
 
