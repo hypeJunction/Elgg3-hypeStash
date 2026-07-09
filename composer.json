@@ -28,7 +28,7 @@
   },
   "autoload": {
     "psr-4": {
-      "hypeJunction\\\\Stash\\\\": "classes/hypeJunction/Stash/"
+      "hypeJunction\\Stash\\": "classes/hypeJunction/Stash/"
     }
   },
   "config": {
